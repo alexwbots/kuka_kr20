@@ -3,9 +3,7 @@ Panels:
     Help Height: 138
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /Global Options1
-        - /Status1
+      Expanded: ~
       Splitter Ratio: 0.5
     Tree Height: 813
   - Class: rviz/Selection
@@ -66,6 +64,51 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        gripper:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        gripper_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        gripper_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link01:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link02:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link03:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link04:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link05:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         world:
           Alpha: 1
           Show Axes: false
@@ -77,14 +120,10 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base:
-          Value: true
-        world:
-          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -92,10 +131,16 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        world:
-          base:
-            {}
+        {}
       Update Interval: 0
+      Value: false
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: visualization_marker
+      Name: Marker
+      Namespaces:
+        frame_markers: true
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
@@ -125,7 +170,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.6981192827224731
+      Distance: 1.3684881925582886
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -133,17 +178,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.20525813102722168
-        Y: 0.005663405172526836
-        Z: 0.1411348283290863
+        X: 0.03283558413386345
+        Y: 0.6301618814468384
+        Z: 0.47255897521972656
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6153979301452637
+      Pitch: 0.3553980886936188
       Target Frame: <Fixed Frame>
-      Yaw: 6.26358699798584
+      Yaw: 5.373591423034668
     Saved: ~
 Window Geometry:
   Displays:

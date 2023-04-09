@@ -5,7 +5,7 @@
   <rosparam file="$(find kuka_kr20_description)/config/trajectory_control.yaml" command="load" />
   
   <!-- Joint Controllers -->
-  <node name="scorbot_er_controller_spawner" pkg="controller_manager" type="spawner"
+  <node name="kr2_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="false" output="screen" ns="/kr20"
         args="kr20_joint_controller
               gripper_controller"/>

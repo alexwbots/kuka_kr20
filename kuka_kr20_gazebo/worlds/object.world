@@ -8,14 +8,9 @@
       <uri>model://sun</uri>
     </include>
     <include>
-      <uri>model://table</uri>
-      <name>table</name>
-      <pose>1.0 0.0 0.0 0 0 -1.5708</pose>
-    </include>
-    <include>
       <uri>model://object</uri>
       <name>object</name>
-      <pose>1.0 0.0 1.1 1.5708 0 1.5708</pose>
+      <pose>0.0 0.0 0.05 0 0 0</pose>
     </include>
   </world>
 </sdf>

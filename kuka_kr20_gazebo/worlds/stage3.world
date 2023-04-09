@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://table</uri>
+      <name>table1</name>
+      <pose>1.0 0.0 0.0 0 0 -1.5708</pose>
+    </include>
+    <include>
+      <uri>model://sobject</uri>
+      <name>object</name>
+      <pose>1.0 0.0 1.09 1.5708 0 1.5708</pose>
+    </include>
+    <include>
+      <uri>model://table</uri>
+      <name>table2</name>
+      <pose>-0.2 1.0 0.0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://boxx</uri>
+      <name>boxx</name>
+      <pose>0.0 0.8 1.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://plane_box</uri>
+      <name>plane_box1</name>
+      <pose>1.0 0.3 1.09 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://plane_box</uri>
+      <name>plane_box2</name>
+      <pose>1.0 -0.3 1.09 0 0 0</pose>
+    </include>
+  </world>
+</sdf>

@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import rospy
+from sensor_msgs.msg import JointState
+from functions import *
+import tf
+from scipy.spatial.transform import Rotation as R
+
+
+if __name__ == '__main__':
+
+  # Initialize the node
+  rospy.init_node("testKineControlPose")
+
+
+  # Desired pose
+  Rd = np.array([[-1,0,0],[0,1,0],[0,0,-1]])
+  #qd = rot2quat(Rd) # NOT GOOD
+  qa = Quaternion([0,1,0,0]) 
+  qd = Quaternion([0.9238795,0,0,0.3826834]) 
+  print(qd)
+  print("Inversa!!!") 
+  print(qd.inverse)
+  
+  print(qa*(qd.inverse))
+  

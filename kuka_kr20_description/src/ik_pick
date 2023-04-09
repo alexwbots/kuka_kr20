@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+import time
+import roslib
+import rospy
+import actionlib
+from functions import *
+from control_msgs.msg import *
+from trajectory_msgs.msg import *
+
+
+if __name__ == '__main__':
+    
+  rospy.init_node("test_gazebo", disable_signals=True)
+  robot_client = actionlib.SimpleActionClient('/kr20/kr20_joint_controller/follow_joint_trajectory', FollowJointTrajectoryAction)
+
+  print("Waiting for server...")
+  robot_client.wait_for_server()
+  print("Connected to server")
+
+  joint_names = ['base__link01', 'link01__link02', 'link02__link03', 'link03__link04', 'link04__link05', 'link05__gripper']
+
+  g = FollowJointTrajectoryGoal()
+  g.trajectory = JointTrajectory()
+  g.trajectory.joint_names = joint_names
+
+  Q0 = [0.0, -0.42, -0.32, 0, -1.65, 0]
+  T = fkine_kr20(Q0)
+  x_act = TF2xyzquat(T)
+  q = Q0
+  dt = 0.1
+  
+  print(x_act)
+    
+  # Initial position
+  g.trajectory.points = [ JointTrajectoryPoint(positions=Q0, velocities=[0]*6,time_from_start=rospy.Duration(2.0))]
+  robot_client.send_goal(g)
+  robot_client.wait_for_result()
+  rospy.sleep(1)
+    
+  rate = rospy.Rate(10)
+  while not rospy.is_shutdown():
+    robot_client.cancel_goal()
+
+    x_des = x_act
+    x_des[0] = x_des[0] + 0.1 
+          
+    # Error de posicion
+    pose_pos = x_des[0:3] - x_act[0:3]
+    # Error de orientacion
+    wd= x_des[3]; ed= x_des[4:7] # Desire quaternion Qd
+    w = x_act[3]; e = x_act[4:7] # Actual quaternion Q
+   
+    quat_act = Quaternion(x_act[3],x_act[4],x_act[5],x_act[6])
+    quat_des = Quaternion(x_des[3],x_des[4],x_des[5],x_des[6])
+    
+    ee = quat_act*quat_des.inverse
+    e0 = np.array([ee[0], ee[1], ee[2], ee[3]])
+    
+    k_p=0.2
+    k_o=0.1
+  
+    # Error
+    err_pose=np.hstack((pose_pos*(-k_p),e0*(k_o)))
+    e_p =err_pose#-k*err_pose
+    try:
+      J_= np.linalg.inv(jacobian_pose(q))
+    except:
+      #print("Jacobiano amortiguado")
+      Jc = jacobian_pose(q)
+      kjc = 0.001
+      J_ = (Jc.T).dot(np.linalg.pinv(Jc.dot(Jc.T)+(kjc**2)*np.eye(7)))
+    
+      q_p = J_.dot(e_p)
+      q = q + dt*q_p
+        
+      g.trajectory.points = [ JointTrajectoryPoint(positions=q, velocities=[0]*6, time_from_start=rospy.Duration(0.01))]
+      robot_client.send_goal(g)
+      robot_client.wait_for_result()
+
+      rate.sleep()
+
+  robot_client.cancel_goal()

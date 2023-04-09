@@ -67,24 +67,24 @@
 
   <gazebo reference="gripper_left">
     <material>Gazebo/White</material>
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
-    <kp>500000.0</kp>
-    <kd>10.0</kd>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+    <!--maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1-->
   </gazebo>
 
   <gazebo reference="gripper_right">
     <material>Gazebo/White</material>
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
-    <kp>500000.0</kp>
-    <kd>10.0</kd>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+    <!--maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1-->
   </gazebo>
 
   <!-- BEGIN - Robot description -->
@@ -93,9 +93,9 @@
            axis_xyz="0 0 1"
            origin_rpy="0 0 0" origin_xyz="0 0 0.3"
            parent="${link_00_name}" child="${link_01_name}"
-           limit_e="1000" limit_l="-2.3562" limit_u="2.3562" limit_v="0.5" />
+           limit_e="1000" limit_l="-3" limit_u="3" limit_v="0.5" />
 
-    <xacro:m_link_mesh name="${link_01_name}" color="Orange"
+  <xacro:m_link_mesh name="${link_01_name}" color="Orange"
               origin_rpy="1.5708 0 -1.5708" origin_xyz="0 0 0"
               mass="157.633"
               ixx="13.235" ixy="0" ixz="0"
@@ -108,7 +108,7 @@
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="0.160 -0.095 0.220"
            parent="${link_01_name}" child="${link_02_name}"
-           limit_e="1000" limit_l="-0.7854" limit_u="1.7453" limit_v="0.5" />
+           limit_e="1000" limit_l="-1.5708" limit_u="1.7453" limit_v="0.5" />
 
   <xacro:m_link_mesh name="${link_02_name}" color="Orange"
               origin_rpy="1.5708 0 1.5708" origin_xyz="0 0 0"
@@ -121,9 +121,9 @@
 
   <xacro:m_joint name="${link_02_name}__${link_03_name}" type="revolute"
            axis_xyz="0 -1 0"
-           origin_rpy="0 0 0" origin_xyz="0.00 0 0.780"
+           origin_rpy="0 0 0" origin_xyz="0.00 -0.01 0.780"
            parent="${link_02_name}" child="${link_03_name}"
-           limit_e="1000" limit_l="-1.8326" limit_u="1.8326" limit_v="0.5" />
+           limit_e="1000" limit_l="-2" limit_u="2" limit_v="0.5" />
 
   <xacro:m_link_mesh name="${link_03_name}" color="Orange"
               origin_rpy="1.5708 0 -1.5708" origin_xyz="0 0 0"
@@ -138,7 +138,7 @@
            axis_xyz="1 0 0"
            origin_rpy="0 0 0" origin_xyz="0.700 0.105 0.150"
            parent="${link_03_name}" child="${link_04_name}"
-           limit_e="1000" limit_l="-2.0" limit_u="2.0" limit_v="0.5" />
+           limit_e="1000" limit_l="-3.0" limit_u="3.0" limit_v="0.5" />
 
   <xacro:m_link_mesh name="${link_04_name}" color="Orange"
               origin_rpy="1.5708 0 1.5708" origin_xyz="0 0 0"
@@ -153,7 +153,7 @@
            axis_xyz="0 -1 0"
            origin_rpy="0 0 0" origin_xyz="0.155 0.000 0.000"
            parent="${link_04_name}" child="${link_05_name}"
-           limit_e="1000" limit_l="-2.0" limit_u="2.0" limit_v="0.5" />
+           limit_e="1000" limit_l="-3.0" limit_u="3.0" limit_v="0.5" />
 
   <xacro:m_link_mesh name="${link_05_name}" color="Orange"
               origin_rpy="1.5708 0 1.5708" origin_xyz="0 0 0"
@@ -185,7 +185,7 @@
            axis_xyz="1 0 0"
            origin_rpy="1.5708 0 1.5708" origin_xyz="0.04 0.00 0.000"
            parent="${gripper_name}" child="gripper_left"
-           limit_e="1000" limit_l="-0.07" limit_u="0.00" limit_v="0.5" />
+           limit_e="1000" limit_l="-0.09" limit_u="0.00" limit_v="0.5" />
 
   <xacro:m_link_mesh name="gripper_left" color="Grey"
               origin_rpy="0 0 0" origin_xyz="0 0 0"
@@ -200,7 +200,7 @@
            axis_xyz="1 0 0"
            origin_rpy="1.5708 0 1.5708" origin_xyz="0.04 0.00 0.000"
            parent="${gripper_name}" child="gripper_right"
-           limit_e="1000" limit_l="0.00" limit_u="0.07" limit_v="0.5" />
+           limit_e="1000" limit_l="0.00" limit_u="0.09" limit_v="0.5" />
 
   <xacro:m_link_mesh name="gripper_right" color="Grey"
               origin_rpy="0 0 0" origin_xyz="0 0 0"
@@ -208,7 +208,7 @@
               ixx="1" ixy="0" ixz="0"
               iyy="1" iyz="0"
               izz="1"
-              meshfile="package://scorbot_er_description/meshes/gripper_right.stl"
+              meshfile="package://kuka_kr20_description/meshes/gripper_right.stl"
               meshscale="0.001 0.001 0.001" />
 
   <!-- GRIPPER END HERE -->
@@ -223,6 +223,78 @@
     </plugin>
   </gazebo>
   
+  <!-- BEGIN - RGB Camera -->
+  
+  <joint name="world__camera_link" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="1.0 0.0 1.6" rpy="0 1.5708 0"/>
+    <parent link="world"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <!-- Head Camera -->
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.06 0.03"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.06 0.03"/>
+      </geometry>
+      <material name="Black"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="head_camera">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame. That pixel's noise value is added to each of its color channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>head_camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- END - RGB Camera -->
 
   <!-- BEGIN - DEPTH-RGB Camera -->
 
