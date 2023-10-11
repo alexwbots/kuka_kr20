@@ -3,7 +3,7 @@
 import rospy
 from sensor_msgs.msg import JointState
 from markers import *
-from functions import *
+from lab5functions import *
 
 
 rospy.init_node("testInvKine")
