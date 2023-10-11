@@ -2,7 +2,7 @@
 import rospy
 from sensor_msgs.msg import JointState
 from markers import *
-from functions import *
+from lab5functions import *
 
 rospy.init_node("testForwardKinematics")
 pub = rospy.Publisher('joint_states', JointState, queue_size=1)
