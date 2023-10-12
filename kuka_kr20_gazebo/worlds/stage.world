@@ -13,7 +13,7 @@
       <pose>1.0 0.0 0.0 0 0 -1.5708</pose>
     </include>
     <include>
-      <uri>model://sobject</uri>
+      <uri>model://object</uri>
       <name>object</name>
       <pose>1.0 0.0 1.05 1.5708 0 1.5708</pose>
     </include>
@@ -23,7 +23,7 @@
       <pose>-0.2 1.0 0.0 0 0 0</pose>
     </include>
     <include>
-      <uri>model://boxx</uri>
+      <uri>model://FR_box</uri>
       <name>boxx</name>
       <pose>0.0 1.0 1.05 0 0 0</pose>
     </include>
