@@ -15,7 +15,7 @@
     <include>
       <uri>model://object</uri>
       <name>object</name>
-      <pose>1.0 0.0 1.05 1.5708 0 1.5708</pose>
+      <pose>1.0 0.0 1.02 1.5708 0 1.5708</pose>
     </include>
     <include>
       <uri>model://table</uri>
@@ -25,7 +25,7 @@
     <include>
       <uri>model://FR_box</uri>
       <name>boxx</name>
-      <pose>0.0 1.0 1.05 0 0 0</pose>
+      <pose>0.0 0.9 1.02 1.5708 0 0</pose>
     </include>
   </world>
 </sdf>
